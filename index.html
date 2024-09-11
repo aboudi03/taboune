@@ -19,6 +19,7 @@
     h1 {
       font-size: 2em;
       color: #333;
+      text-align: center; /* Center the title */
     }
     .money-count {
       font-size: 3em;
@@ -79,24 +80,27 @@
 </head>
 <body>
 
+  <!-- Centered Title -->
+  <h1>Deep State</h1>
+
   <!-- Centered Image -->
   <img src="download.jpg" alt="Centered Image" class="centered-img">
 
   <!-- Money Counter -->
-  <h1>Money: <span id="money-count" class="money-count">0</span></h1>
+  <h1>Sandou2 Taboune: <span id="money-count" class="money-count">0</span></h1>
 
   <!-- Buttons to Add and Subtract Money -->
   <div class="button-container">
     <div class="button-group">
-      <button onclick="updateMoney(10)">+10</button>
-      <button onclick="updateMoney(100)">+100</button>
       <button onclick="updateMoney(1000)">+1000</button>
+      <button onclick="updateMoney(10000)">+10,000</button>
+      <button onclick="updateMoney(50000)">+50,000</button>
       <button onclick="updateMoney(100000)">+100,000</button>
     </div>
     <div class="button-group">
-      <button class="minus" onclick="updateMoney(-10)">-10</button>
-      <button class="minus" onclick="updateMoney(-100)">-100</button>
       <button class="minus" onclick="updateMoney(-1000)">-1000</button>
+      <button class="minus" onclick="updateMoney(-10000)">-10,000</button>
+      <button class="minus" onclick="updateMoney(-50000)">-50,000</button>
       <button class="minus" onclick="updateMoney(-100000)">-100,000</button>
     </div>
   </div>
