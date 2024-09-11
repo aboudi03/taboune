@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      color: #333;
+    }
+    .money-count {
+      font-size: 3em;
+      margin: 20px;
+      color: #28a745;
+    }
+    .button-container {
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Money: <span id="money-count" class="money-count">0</span></h1>
+  
+  <div class="button-container">
+    <button onclick="updateMoney(10)">+10</button>
+    <button onclick="updateMoney(100)">+100</button>
+    <button onclick="updateMoney(1000)">+1000</button>
+    <button onclick="updateMoney(100000)">+100,000</button>
+  </div>
+
+  <script>
+    // Initialize money count from localStorage
+    let moneyCount = parseInt(localStorage.getItem('moneyCount')) || 0;
+    document.getElementById('money-count').textContent = moneyCount;
+
+    // Function to update the money count
+    function updateMoney(amount) {
+      moneyCount += amount;
+      document.getElementById('money-count').textContent = moneyCount;
+      // Save the updated count in localStorage
+      localStorage.setItem('moneyCount', moneyCount);
+    }
+  </script>
+
+</body>
+</html>
