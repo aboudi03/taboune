@@ -14,6 +14,7 @@
       height: 100vh;
       background-color: #f4f4f4;
       margin: 0;
+      padding: 20px;
     }
     h1 {
       font-size: 2em;
@@ -26,8 +27,14 @@
     }
     .button-container {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 10px;
       margin-top: 20px;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
     }
     button {
       padding: 10px 20px;
@@ -42,10 +49,31 @@
     button:hover {
       background-color: #0056b3;
     }
+    button.minus {
+      background-color: #dc3545;
+    }
+    button.minus:hover {
+      background-color: #c82333;
+    }
     .centered-img {
       margin: 20px;
-      width: 200px;
+      width: 150px;
       height: auto;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .money-count {
+        font-size: 2.5em;
+      }
+      .centered-img {
+        width: 120px;
+      }
+      button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
@@ -57,12 +85,20 @@
   <!-- Money Counter -->
   <h1>Money: <span id="money-count" class="money-count">0</span></h1>
 
-  <!-- Buttons to Add Money -->
+  <!-- Buttons to Add and Subtract Money -->
   <div class="button-container">
-    <button onclick="updateMoney(10)">+10</button>
-    <button onclick="updateMoney(100)">+100</button>
-    <button onclick="updateMoney(1000)">+1000</button>
-    <button onclick="updateMoney(100000)">+100,000</button>
+    <div class="button-group">
+      <button onclick="updateMoney(10)">+10</button>
+      <button onclick="updateMoney(100)">+100</button>
+      <button onclick="updateMoney(1000)">+1000</button>
+      <button onclick="updateMoney(100000)">+100,000</button>
+    </div>
+    <div class="button-group">
+      <button class="minus" onclick="updateMoney(-10)">-10</button>
+      <button class="minus" onclick="updateMoney(-100)">-100</button>
+      <button class="minus" onclick="updateMoney(-1000)">-1000</button>
+      <button class="minus" onclick="updateMoney(-100000)">-100,000</button>
+    </div>
   </div>
 
   <script>
@@ -73,6 +109,7 @@
     // Function to update the money count
     function updateMoney(amount) {
       moneyCount += amount;
+      if (moneyCount < 0) moneyCount = 0;  // Prevent negative money count
       document.getElementById('money-count').textContent = formatNumber(moneyCount);
       // Save the updated count in localStorage
       localStorage.setItem('moneyCount', moneyCount);
